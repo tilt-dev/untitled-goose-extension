@@ -1,6 +1,6 @@
 {
   "name": "@tilt.dev/untitled-goose-extension",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Tilt extension that honks when you messed up your server",
   "main": "index.js",
   "bin": {
