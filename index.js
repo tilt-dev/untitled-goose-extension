@@ -1,7 +1,12 @@
+#!/usr/bin/env node
+
 const { spawn, execSync } = require('child_process')
+const fs = require('fs')
+const Speaker = require('speaker');
 
 // A map of task names to error strings.
 let errors = {}
+let honking = false
 
 // Look at the session data every time it changes.
 function onSessionChange() {
@@ -18,8 +23,14 @@ function onSessionChange() {
   })
 
   for (let key in maybeNewErrors) {
-    if (maybeNewErrors[key] && !errors[key]) {
-      console.error('HONK: ' + maybeNewErrors[key])
+    if (maybeNewErrors[key] && !errors[key] && !honking) {
+      honking = true
+      let speaker = new Speaker({channels: 2, bitDepth: 16, sampleRate: 44100});
+      let honkStream = fs.createReadStream('./honk.wav')
+      honkStream.on('end', () => {
+        honking = false
+      })
+      honkStream.pipe(speaker)
     }
   }
   errors = maybeNewErrors
