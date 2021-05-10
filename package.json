@@ -1,0 +1,10 @@
+{
+  "name": "@tilt.dev/untitled-goose-extension",
+  "version": "0.1.0",
+  "description": "Tilt extension that honks when you messed up your server",
+  "main": "index.js",
+  "repository": "git@github.com:tilt-dev/untitled-goose-extension",
+  "author": "nick@tilt.dev",
+  "license": "Apache-2.0",
+  "private": false
+}
