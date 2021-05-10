@@ -2,7 +2,8 @@
 
 const { spawn, execSync } = require('child_process')
 const fs = require('fs')
-const Speaker = require('speaker');
+const Speaker = require('speaker')
+const path = require('path')
 
 // A map of task names to error strings.
 let errors = {}
@@ -26,7 +27,7 @@ function onSessionChange() {
     if (maybeNewErrors[key] && !errors[key] && !honking) {
       honking = true
       let speaker = new Speaker({channels: 2, bitDepth: 16, sampleRate: 44100});
-      let honkStream = fs.createReadStream('./honk.wav')
+      let honkStream = fs.createReadStream(path.join(__dirname, './honk.wav'))
       honkStream.on('end', () => {
         honking = false
       })

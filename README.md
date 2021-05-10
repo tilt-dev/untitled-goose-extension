@@ -29,6 +29,8 @@ local_resource(
 
 Must have nodejs/yarn installed.
 
+`yarn global bin` must be on PATH.
+
 On Debian/Ubuntu, you need audio bindings:
 
 ```
